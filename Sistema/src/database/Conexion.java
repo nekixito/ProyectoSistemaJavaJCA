@@ -21,8 +21,9 @@ public class Conexion {
     private final String PASSWORD = "";
     
     public Connection cadena;
+    public static Conexion instancia;
     
-    public Conexion(){
+    private Conexion(){
         this.cadena = null;
     }
     
@@ -46,4 +47,11 @@ public class Conexion {
         }
     }
     
+    public synchronized static Conexion getInstancia(){
+        if( instancia == null ){
+            instancia = new Conexion();
+        }
+        
+        return instancia;
+    }
 }
